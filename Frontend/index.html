@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>ABC Products</title>
+</head>
+<body>
+    <header>
+        <div>
+            <div class="headerLogos">
+                <img id="ABCLogo" src="./assets/img/ABCProducts_Logo.svg" alt="Logo of ABC">
+            </div>
+            <div class="headerLogos">
+                <img id="HRLogo" src="./assets/img/highradius-logo.png" alt="Logo of HighRadius">
+            </div>
+        </div>
+        <div>
+            <p>Invoice List</p>
+        </div>
+    </header>
+    <div class="bodyDiv">
+        <div>
+            <div class="buttons">
+                <div>
+                    <button class="btn enabledBtn" id="addBtn"><i class="icons fa fa-plus" aria-hidden="true"></i><p>Add</p></button>
+                    <button class="btn disabledBtn" id="editBtn"><i class="icons fa fa-pencil" aria-hidden="true"></i><p>Edit</p></button>
+                    <button class="btn disabledBtn" id="deleteBtn"><i class="icons fa fa-minus" aria-hidden="true"></i><p>Delete</p></button>
+                </div>
+                <div>
+                    <input id="searchBar" type="search" placeholder="Search by Invoice Number">
+                    <img class="icons" src="./assets/img/searchIcon.svg" alt="Search Icon">
+                </div>
+            </div>
+            <div id="left-arrow">
+                <button class="unSelectedBtn"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+            </div>
+            <div>
+                <div class="table">
+                    <!-- Add code for table -->
+                    <table id="table">
+                        <thead id="thead">
+                            <tr>
+                                <th class="tickBox">
+                                    <input id="checkAll" type="checkbox" name="allCheckbox">
+                                </th>
+                                <th><p>Customer Name</p></th>
+                                <th><p>Customer #</p></th>
+                                <th><p>Invoice #</p></th>
+                                <th><p>Invoice Amount</p></th>
+                                <th><p>Due Date</p></th>
+                                <th><p>Predicted Payment Date</p></th>
+                                <th><p>Notes</p></th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <!-- No result from Search then show this div -->
+                    <div id="noData">
+                        <div>
+                            <img src="./assets/img/searchError.svg" alt="Icon for no data">
+                        </div>
+                        <h3>No Results Found</h3>
+                        <p>Try adjusting your search to find what you're looking for</p>
+                        <div>
+                            <button id="clearSearchBtn"><p>Clear Search</p></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="right-arrow">
+                <button class="selectedBtn"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>  
+    <!-- Add Modal -->
+    <div id="addModal" class="modal">
+        <div class="modal-content" id="add">
+            <div class="headerDiv">
+                <p>Add Invoice</p>
+                <span class="close">&times;</span>
+            </div>
+            <hr>
+            <div class="modalDivContent">
+                <div>
+                    <div>
+                        <p>Customer Name <span class="star">*</span></p>
+                    </div>
+                    <div>
+                        <p>Customer No. <span class="star">*</span></p>
+                    </div>
+                    
+                    <div>
+                        <p>Invoice No. <span class="star">*</span></p>
+                    </div>
+                    <div>
+                        <p>Invoice Amount <span class="star">*</span></p>
+                    </div>   
+                </div>
+                <div>
+                    <div>
+                        <input type="text" name="customerName" id="customerName" required>
+                    </div>
+                    <div>
+                        <input type="text" name="customerNumber" id="customerNumber" required>
+                    </div>
+                    <div>
+                        <input type="text" name="invoiceNumber" id="invoiceNumber" required>
+                    </div>
+                    <div>
+                        <input type="text" id="invoiceAmount" required>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>Due Date <span class="star">*</span></p>
+                    </div>
+                    <div>
+                        <p>Notes</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input type="date" name="dueDate" id="dueDate" placeholder="" required>
+                    </div>
+                    <div>
+                        <input type="text" name="notes" id="notes" required>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="addDiv" class="modalBtns">
+                <div>
+                    <button class="cancelBtn">Cancel</button>
+                </div>
+                <div>
+                    <button id="clearBtn" onclick="clearInputAddModal()">Clear</button>
+                    <button id="addBtnModal" onclick="callAddAPI()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content" id="edit">
+            <div class="headerDiv">
+                <p>Edit Invoice</p>
+                <span class="close">&times;</span>
+            </div>
+            <hr>
+            <div class="modalDivContent">
+                <div>
+                    <div>
+                        <p>Invoice Amount</p>
+                    </div>
+                    <div>
+                        <p>Notes</p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <input type="text" name="editInvoiceAmount" id="editInvoiceAmount" required/>
+                    </div>
+                    <div>
+                        <input id="editNotes" name="editNotes" type="text" required/>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="editDiv" class="modalBtns">
+                <div>
+                    <button class="cancelBtn">Cancel</button>
+                </div>
+                <div>
+                    <button id="resetBtn" onclick="resetData()">Reset</button>
+                    <button id="editBtnModal" onclick="callEditAPI()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content" id="delete">
+            <div class="headerDiv">
+                <p>Delete record(s)?</p>
+                <span class="close">&times;</span>
+            </div>
+            <hr>
+            <p>You'll lose these record(s) after this action. We can't recover them once you delete.</p>
+            <p>Are you sure you want to <span style="color: #FF5E5E;">permanentely delete</span> them?</p>
+            <hr>
+            <div id="deleteDiv" class="modalBtns">
+                <div>
+                    <button class="cancelBtn" id="delCancelBtn">Cancel</button>
+                    <button id="deleteBtnModal" onclick="callDeleteAPI()">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+    
+    <script src="./app.js"></script>
+</body>
+</html>

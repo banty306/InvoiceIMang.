@@ -1,0 +1,421 @@
+:root{
+    --bgColor:#3F4F65;
+    --textColor:#FFFFFF;
+    --fontFam:'Ubuntu';
+    --bodyDivColor:#2C414F;
+    --selected:#189AD2;
+    --unSelected:#97A1A9;
+    --alternateColor:#283A46;
+    --searchBarBorder:#2E5062;
+    --inputBorder:#356680;
+    --hrColor:#1A262F;
+    --modalBgColor:#2A3E4C;
+    --fontSize:15px;
+    --inActiveButton:#39495E;
+    --activeButton:#14AFF1;
+    --checkboxBorder:#97A1A9;
+}
+ /*----Common----*/
+header,body{
+    background-color: var(--bgColor);
+    margin: 0px;
+    /* width: 100%;
+    height: 100%; */
+}
+header{
+    padding: 5px;
+}
+body{
+    padding: 20px;
+}
+h1,h2,h3,h4,h5,h6,p,input{
+    color: var(--textColor);
+    font-family: var(--fontFam);
+}
+input[type=text],input[type=date]{
+    background-color: var(--alternateColor);
+    outline: none;
+    border: 1px solid var(--inputBorder);
+    padding: 10px;
+    border-radius: 10px;
+}
+/* Removing default date placeholder*/
+:-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+}
+.noMargin{
+    margin: 0px;
+}
+.m-1{
+    margin: 10px;
+}
+.m-15{
+    margin: 15px;
+}
+.m-2{
+    margin: 20px;
+}
+.m-25{
+    margin: 25px;
+}
+.noPadding{
+    padding: 0px;
+}
+.p-1{
+    padding: 10px;
+}
+.p-15{
+    padding: 15px;
+}
+.p-2{
+    padding: 20px;
+}
+.p-25{
+    padding: 25px;
+}
+/*----CheckBox----*/
+input[type="checkbox"]{
+    opacity: 0.25;
+}
+input[type="checkbox"]:checked{
+    opacity: 1;
+    border: none;
+}
+/*----Header----*/
+header{
+    display:flex;
+    flex-direction: column;
+}
+header div{
+    width: 100%;
+    flex-direction: row;
+    display: flex;
+    /* padding-left: 20px; */
+}
+header div p{
+    font-size: 25px;
+}
+.headerLogos{
+    flex-direction:row;
+    padding-left: 0px;
+    align-items: center;
+}
+#HRLogo{
+    width: 200px;
+    height: 40px;
+    margin-left: -100px;
+}
+#ABCLogo{
+    height: 40px;
+    width: 240px;
+}
+/*----Body----*/
+.bodyDiv{
+    background-color: var(--bgColor);
+}
+.bodyDiv div{
+    background-color: var(--bodyDivColor);
+    border-radius: 10px;
+}
+/*---- Toggle Button Colors ----*/
+.disabledBtn{
+    border: 2px solid var(--unSelected);
+}
+.enabledBtn{
+    border: 2px solid var(--selected);
+}
+.enabledBtn i,.enabledBtn p{
+    color: var(--textColor);
+}
+.disabledBtn i, .disabledBtn p{
+    color: var(--unSelected);
+}
+/*------------------------------*/
+/*----Body Header----*/
+button{
+    background-color: inherit;
+    border-radius: 8px;
+}
+button:hover{
+    cursor: pointer;
+}
+.buttons button{
+    padding: 5px;
+}
+.btn > * {
+    display: inline;
+    padding: 5px 5px;
+}
+.icons{
+    width: 15px;
+    height: 15px;
+}
+.icons + p {
+    padding-left: 5px;
+    font-size: var(--fontSize);
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 20px;
+}
+.buttons > *, .buttons > * > *{
+    margin: 0px 5px;
+}
+#searchBar{
+    background-color: inherit;
+    border: none;
+    color: var(--unSelected);
+    height: fit-content;
+    outline: none;
+    font-size: var(--fontSize);
+}
+/*Second Div in Buttons Div*/
+.buttons div:nth-child(2){
+    background-color: var(--alternateColor);
+    border: 3px solid var(--searchBarBorder);
+    border-radius: 10px;
+    padding: 5px;
+}
+/*----Table----*/
+.table{
+    width: 100%;
+}
+table{
+    width: inherit;
+    padding-left:20px;
+}
+th,td{
+    font-weight: normal;
+    width: fit-content;
+    height: fit-content;
+}
+th p{
+    color: var(--unSelected);
+}
+thead tr,tbody tr{
+    display: grid;
+    grid-template-columns:min-content 15vw 10vw 10vw 10vw 10vw 15vw 21vw;
+}
+.tickBox{
+    margin: auto 10px;
+    background: transparent;
+}
+tbody tr:nth-child(even){
+    background-color: var(--alternateColor);
+}
+
+/*---- Modals ----*/
+/*----Common----*/
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+/* Modal Content */
+.modal-content {
+    background-color: var(--modalBgColor);
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#add{
+    width: 1106px;
+    height: 509px;
+}
+
+#edit{
+    width: 543px;
+    height: 500px;
+}
+
+#delete{
+    width:611px;
+    height: 280px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    margin: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}  
+.close:hover,
+.close:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+hr{
+    background-color: var(--hrColor);
+    border: 1px solid var(--hrColor);
+}
+.headerDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.modalDivContent{
+    display: grid;
+    grid-template-columns: max-content auto max-content auto;
+    width: 100%;
+}
+.star{
+    color: red;
+}
+.headerDiv p{
+    font-size: 28px;
+}
+.modalBtns{
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.modalBtns button{
+    padding: 10px;
+}
+.cancelBtn{
+    background-color: transparent;
+    border: none;
+    color: var(--activeButton);
+    margin-left: 30px;
+}
+/*--------Add Modal--------*/
+.modalDivContent div{
+    padding: 10px 10px;
+}
+.modalDivContent input{
+    margin: 7px 0px;
+    width: 300px;
+}
+#notes, #editNotes{
+    display: flex;
+    align-items: flex-start;
+    height: 155px;
+}
+#clearBtn{
+    border: 2px solid var(--selected);
+    color: var(--textColor);
+}
+#addBtnModal{
+    background-color: var(--unSelected);
+    color: var(--textColor);
+    border: none;
+    margin-right: 30px;
+}
+/*--------Edit Modal--------*/
+#resetBtn{
+    border: 2px solid var(--selected);
+    color: var(--textColor);
+}
+#editBtnModal{
+    background-color: var(--activeButton);
+    color: var(--textColor);
+    border: none;
+    margin-right: 30px;
+}
+/*--------Delete Modal--------*/
+#delCancelBtn{
+    border: 2px solid var(--selected);
+    color: var(--textColor);
+}
+#deleteBtnModal{
+    background-color: var(--activeButton);
+    color: var(--textColor);
+    border: none;
+}
+#deleteDiv{
+    float: right;
+    padding-right:30px;
+}
+/*----Arrow Button Common----*/
+.unSelectedBtn{
+    background-color: var(--inActiveButton);
+}
+.unSelectedBtn i{
+    color: grey;
+}
+.selectedBtn{
+    background-color: var(--activeButton);
+}
+.selectedBtn i{
+    color: #fff;
+}
+/*----Left Arrow Button----*/
+#left-arrow{
+    float: left;
+    border-radius: 50%;
+}
+#left-arrow button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0px 0px 6px #00000069;
+}
+/*----Right Arrow Button----*/
+#right-arrow{
+    border-radius: 50%;
+    position:absolute;
+    top: 50%;
+    right: 30px;
+}
+#left-arrow{
+    border-radius: 50%;
+    position:absolute;
+    top: 50%;
+    left: 20px;
+}
+#right-arrow button{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0px 0px 6px #00000069;
+}
+
+/* ------ No Data Div styling --------*/
+#noData{
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom:200px;
+    display: none;
+}
+#noData div{
+    display: flex;
+    justify-content: center;
+    /* height: 100px; */
+}
+#noData>*{
+    display: block;
+}
+#noData h3{
+    color: var(--textColor);
+}
+#noData p{
+    color: var(--unSelected);
+}
+#clearSearchBtn{
+    margin-top: 10px;
+    border: none;
+    background-color: inherit;
+}
+#clearSearchBtn p{
+    font-size: 20px;
+    color: var(--selected);
+}
